@@ -1,0 +1,15 @@
+<%+header%>
+
+<script type="text/javascript">
+  var substoreHost = window.location.protocol + "//" + window.location.host.split(":")[0] + ":3001/";
+
+  document.write(
+    '<div class="cbi-map">' +
+    '<iframe src="' + substoreHost + '" ' +
+    'style="width:100%; height:900px; border:none; overflow:auto;" ' +
+    'scrolling="auto"></iframe>' +
+    '</div>'
+  );
+</script>
+
+<%+footer%>

@@ -9,11 +9,15 @@ depends="nodejs wget unzip"
 package() {
     mkdir -p "$pkgdir/etc/substore"
     mkdir -p "$pkgdir/www/substore"
+    mkdir -p "$pkgdir/root"
 
     cp -r "$srcdir/files/etc/"* "$pkgdir/etc/"
     cp -r "$srcdir/files/www/"* "$pkgdir/www/"
     cp -r "$srcdir/files/usr/"* "$pkgdir/usr/"
-    cp -r "$srcdir/files/root/"* "$pkgdir/root/"
+    cp ./scripts/update_substore_backend.sh "$pkgdir/root/"
+    cp ./scripts/update_substore_frontend.sh "$pkgdir/root/"
 
     chmod +x "$pkgdir/etc/init.d/substore"
+    chmod +x "$pkgdir/root/update_substore_backend.sh"
+    chmod +x "$pkgdir/root/update_substore_drontend.sh"
 }

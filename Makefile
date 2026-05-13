@@ -17,6 +17,10 @@ define Package/substore/install
 	$(INSTALL_DIR) $(1)/etc/substore
 	$(INSTALL_BIN) ./files/etc/init.d/substore $(1)/etc/init.d/
 
+	$(INSTALL_DIR) $(1)/root
+    $(INSTALL_BIN) ./scripts/update_substore_backend.sh $(1)/root/
+	$(INSTALL_BIN) ./scripts/update_substore_frontend.sh $(1)/root/
+
 	$(CP) ./files/www $(1)/
 	$(CP) ./files/usr $(1)/
 	$(CP) ./files/root $(1)/

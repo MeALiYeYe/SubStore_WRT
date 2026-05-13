@@ -1,0 +1,19 @@
+pkgname=substore
+pkgver=2.23.2
+pkgrel=0
+pkgdesc="Sub-Store for OpenWrt/Alpine"
+arch="all"
+license="MIT"
+depends="nodejs wget unzip"
+
+package() {
+    mkdir -p "$pkgdir/etc/substore"
+    mkdir -p "$pkgdir/www/substore"
+
+    cp -r "$srcdir/files/etc/"* "$pkgdir/etc/"
+    cp -r "$srcdir/files/www/"* "$pkgdir/www/"
+    cp -r "$srcdir/files/usr/"* "$pkgdir/usr/"
+    cp -r "$srcdir/files/root/"* "$pkgdir/root/"
+
+    chmod +x "$pkgdir/etc/init.d/substore"
+}

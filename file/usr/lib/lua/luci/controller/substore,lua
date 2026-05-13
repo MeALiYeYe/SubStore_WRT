@@ -1,0 +1,7 @@
+module("luci.controller.substore", package.seeall)
+
+function index()
+    entry({"admin", "services", "substore"}, 
+          template("substore/index"), 
+          _("Sub-Store"), 10)
+end

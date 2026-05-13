@@ -1,0 +1,27 @@
+#!/bin/sh /etc/rc.common
+# =============================================
+# Sub-Store 后端服务
+# procd 启动
+# =============================================
+START=99
+STOP=10
+USE_PROCD=1
+
+PROG="/usr/bin/node"
+WORKDIR="/etc/substore"
+BUNDLE="sub-store.bundle.js"
+
+start_service() {
+    echo "Starting Sub-Store..."
+    procd_open_instance
+    procd_set_param command $PROG "$WORKDIR/$BUNDLE" --port 3000
+    procd_set_param cwd "$WORKDIR"
+    procd_set_param respawn
+    procd_close_instance
+}
+
+stop_service() {
+    echo "Stopping Sub-Store..."
+    # 使用 procd 自动管理的进程，stop 会自动停止
+    # 不需要手动 procd_kill_instance
+}
